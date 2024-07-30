@@ -47,6 +47,18 @@ public class InventoryController {
         inventoryService.deleteInventoryItem(id);
     }
 
+    @GetMapping("/search")
+    @Operation(summary = "Search inventory items", description = "Search inventory items based on a keyword")
+    public List<InventoryItem> searchInventoryItems(@RequestParam String keyword) {
+        return inventoryService.searchInventoryItems(keyword);
+    }
+
+    @GetMapping("/sorted")
+    @Operation(summary = "Get sorted inventory items", description = "Retrieves inventory items sorted by a specific field")
+    public List<InventoryItem> sortInventoryItems(@RequestParam String sortBy) {
+        return inventoryService.sortInventoryItems(sortBy);
+    }
+
 
 
 }
